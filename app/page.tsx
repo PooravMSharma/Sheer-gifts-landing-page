@@ -163,10 +163,10 @@ export default function Home() {
 
         <div className="signature-gallery">
           <figure className="gallery-main">
-            <img src="/brand/client/pink-ribbon-gift-box.jpeg" alt="A pink gift box finished with a bright ribbon and pearl details" width="700" height="700" loading="lazy" />
+            <img src="/brand/client/wellness-hamper.jpeg" alt="A cream and gold wellness hamper with bath and body products" width="960" height="1280" loading="lazy" />
           </figure>
           <figure className="gallery-small">
-            <img src="/brand/client/wellness-hamper.jpeg" alt="A cream and gold wellness hamper with bath and body products" width="420" height="520" loading="lazy" />
+            <img src="/brand/client/pink-ribbon-gift-box.jpeg" alt="A pink gift box finished with a bright ribbon and pearl details" width="960" height="1280" loading="lazy" />
           </figure>
           <p className="gallery-caption">Tiny details.<br />Big feelings.</p>
         </div>
