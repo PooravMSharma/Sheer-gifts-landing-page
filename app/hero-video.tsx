@@ -40,14 +40,14 @@ export default function HeroVideo() {
         loop
         playsInline
         preload="metadata"
-        poster="/brand/client/featured-kuromi-hamper.jpeg"
-        aria-label="A customised Kuromi-themed balloon hamper with flowers and gifts"
+        poster="/brand/client/featured-wedding-hamper-poster.png"
+        aria-label="A red and gold first wedding invitation hamper with personalised keepsakes"
         width="640"
         height="800"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       >
-        <source src="/brand/client/featured-kuromi-hamper.mp4" type="video/mp4" />
+        <source src="/brand/client/featured-wedding-hamper.mp4" type="video/mp4" />
       </video>
       <button
         className="hero-video-control"

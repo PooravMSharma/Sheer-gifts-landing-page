@@ -67,6 +67,7 @@ export default function Home() {
         <nav aria-label="Primary navigation">
           <a href="#gifting">Our gifting</a>
           <a href="#story">Our story</a>
+          <a href="#feedback">Kind words</a>
           <a href="#contact">Contact</a>
         </nav>
 
@@ -223,6 +224,54 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="feedback section" id="feedback">
+        <div className="feedback-heading">
+          <p className="eyebrow"><span /> Kind words</p>
+          <h2>Made with care.<br /><em>Felt in return.</em></h2>
+          <p className="feedback-intro">
+            The sweetest part of every order is hearing how the details made someone feel.
+          </p>
+          <div className="feedback-rating" aria-label="Five-star customer feedback">
+            <span aria-hidden="true">★★★★★</span>
+            <p>Real messages from Sheer customers</p>
+          </div>
+        </div>
+
+        <div className="feedback-grid">
+          <article className="feedback-card feedback-card-1">
+            <figure className="feedback-shot">
+              <img
+                src="/brand/client/customer-feedback-best-friend.jpeg"
+                alt="WhatsApp feedback praising the thoughtful customisation and saying the recipient loved everything"
+                width="739"
+                height="1600"
+                loading="lazy"
+              />
+            </figure>
+            <blockquote>
+              “You’re amazing—the way you create everything with so much effort and customise it to my preference. My best friend loved everything!”
+            </blockquote>
+            <p className="feedback-context">A best-friend surprise</p>
+          </article>
+
+          <article className="feedback-card feedback-card-2">
+            <figure className="feedback-shot">
+              <img
+                src="/brand/client/customer-feedback-customisation.jpeg"
+                alt="WhatsApp feedback saying the gift was exactly as requested and the detailing and customisation were top notch"
+                width="739"
+                height="1600"
+                loading="lazy"
+              />
+            </figure>
+            <blockquote>
+              “The gift was exactly as I wanted. The detailing and customisation were top notch—really loved it!”
+            </blockquote>
+            <p className="feedback-context">Made exactly to the brief</p>
+          </article>
+        </div>
+      </section>
+
       <section className="faq section">
         <div>
           <p className="eyebrow"><span /> Good to know</p>
@@ -251,7 +300,6 @@ export default function Home() {
         <a className="button button-dark" href={whatsappUrl} target="_blank" rel="noreferrer">
           Order on WhatsApp <span aria-hidden="true">↗</span>
         </a>
-        <a className="closing-whatsapp-number" href={whatsappUrl} target="_blank" rel="noreferrer">+91 82092 16121</a>
         <span className="closing-note">Thoughtfully curated in Jaipur</span>
       </section>
 
@@ -261,7 +309,7 @@ export default function Home() {
         </a>
         <div>
           <p>Custom hampers · Personalised gifts · Jaipur</p>
-          <a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp +91 82092 16121 ↗</a>
+          <a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp ↗</a>
           <a href={instagramUrl} target="_blank" rel="noreferrer">Instagram ↗</a>
         </div>
         <p>Crafted for moments that matter.</p>
