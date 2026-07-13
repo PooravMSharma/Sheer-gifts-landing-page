@@ -168,7 +168,6 @@ export default function Home() {
           <figure className="gallery-small">
             <img src="/brand/client/pink-ribbon-gift-box.jpeg" alt="A pink gift box finished with a bright ribbon and pearl details" width="960" height="1280" loading="lazy" />
           </figure>
-          <p className="gallery-caption">Tiny details.<br />Big feelings.</p>
         </div>
       </section>
 
