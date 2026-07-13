@@ -9,13 +9,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const forwardedProto = requestHeaders.get("x-forwarded-proto")?.split(",")[0].trim();
   const protocol = forwardedProto || (host.startsWith("localhost") ? "http" : "https");
   const metadataBase = new URL(`${protocol}://${host}`);
-  const socialImage = new URL("/og-simple.png", metadataBase).toString();
+  const socialImage = new URL("/og.png", metadataBase).toString();
 
   return {
     metadataBase,
     title: "Sheer Gifts Jaipur | Bespoke Hampers & Personalised Gifts",
     description:
-      "Sheer Gifts Jaipur creates custom hampers and personalised gifts for birthdays, friendships, weddings and meaningful celebrations.",
+      "Thoughtful gifting, reimagined. Discover custom hampers, personalised gifts and floral gestures curated by Sheer Gifts in Jaipur.",
     icons: {
       icon: "/brand/sheer-gifts-logo.jpg",
       shortcut: "/brand/sheer-gifts-logo.jpg",
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       title: "Sheer Gifts Jaipur",
-      description: "Custom hampers and personalised gifts, thoughtfully curated in Jaipur.",
+      description: "Bespoke hampers and personalised gifts, thoughtfully curated in Jaipur.",
       type: "website",
       locale: "en_IN",
       images: [
@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: "Sheer Gifts Jaipur",
-      description: "Custom hampers and personalised gifts, thoughtfully curated in Jaipur.",
+      description: "Bespoke hampers and personalised gifts, thoughtfully curated in Jaipur.",
       images: [socialImage],
     },
   };

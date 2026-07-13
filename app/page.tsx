@@ -1,35 +1,60 @@
 const instagramUrl = "https://www.instagram.com/sheergiftsjaipur/";
 const whatsappUrl =
-  "https://wa.me/919636057292?text=Hi%20Sheer%20Gifts%20Jaipur!%20I%20would%20like%20to%20order%20a%20customised%20gift.";
+  "https://wa.me/918209216121?text=Hi%20Sheer%20Gifts%20Jaipur!%20I%20would%20like%20to%20place%20an%20order.";
 
-const gifts = [
+const giftingCategories = [
   {
-    title: "Custom Hampers",
-    text: "Thoughtfully curated hampers made around the person and the occasion.",
+    title: "Custom hampers",
+    note: "Curated around the person, the occasion and the feeling you want to send.",
     image: "/brand/bride-to-be-hamper.jpg",
-    alt: "A personalised hamper created by Sheer Gifts Jaipur",
+    alt: "A personalised Sheer Gifts bride-to-be hamper",
+    tag: "Made personal",
   },
   {
-    title: "Personalised Gifts",
-    text: "Photos, notes and meaningful details turned into gifts they will remember.",
+    title: "Memory gifts",
+    note: "Photos, notes and tiny details come together in keepsakes that feel unmistakably theirs.",
     image: "/brand/best-friend-memory-board.jpg",
-    alt: "A handmade personalised memory board by Sheer Gifts Jaipur",
+    alt: "A handmade birthday memory board by Sheer Gifts",
+    tag: "Friendship & birthdays",
   },
   {
-    title: "Gifts for Every Moment",
-    text: "Birthdays, friendships, weddings and celebrations—made a little more special.",
+    title: "Celebration boxes",
+    note: "A joyful mix of treats, flowers and personal touches for moments worth marking.",
     image: "/brand/love-basket.jpg",
-    alt: "A celebration gift basket with treats, flowers and photographs",
+    alt: "A love basket with snacks, flowers and photographs",
+    tag: "Love & milestones",
   },
+  {
+    title: "Balloon hampers",
+    note: "A playful statement gift, styled with favourite treats and messages from the heart.",
+    image: "/brand/balloon-hamper.jpg",
+    alt: "A customised balloon hamper with flowers and treats",
+    tag: "Big little surprises",
+  },
+];
+
+const signatureGifts = [
+  "Custom hampers",
+  "Personalised gifts",
+  "Floral bouquets",
+  "Wedding invitations",
+  "Birthday gifting",
+  "Friendship keepsakes",
 ];
 
 export default function Home() {
   return (
-    <main id="top">
-      <div className="announcement">Bespoke gifting from Jaipur · Custom hampers & personalised gifts</div>
+    <main>
+      <div className="announcement">
+        <p>Thoughtful gifting, reimagined</p>
+        <span aria-hidden="true">✦</span>
+        <p>Custom-made in Jaipur</p>
+        <span aria-hidden="true">✦</span>
+        <p>WhatsApp to order</p>
+      </div>
 
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Sheer Gifts Jaipur home">
+        <a className="brand" href="#top" aria-label="Sheer Gifts home">
           <img src="/brand/sheer-gifts-logo.jpg" alt="" width="52" height="52" />
           <span>
             <strong>Sheer Gifts</strong>
@@ -38,138 +63,212 @@ export default function Home() {
         </a>
 
         <nav aria-label="Primary navigation">
-          <a href="#about">About</a>
-          <a href="#gifts">Our gifts</a>
+          <a href="#gifting">Our gifting</a>
+          <a href="#story">Our story</a>
           <a href="#contact">Contact</a>
         </nav>
 
-        <a className="header-order" href={whatsappUrl} target="_blank" rel="noreferrer">
+        <a className="header-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
           Order on WhatsApp <span aria-hidden="true">↗</span>
         </a>
       </header>
 
-      <section className="hero">
+      <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow"><span /> Thoughtful gifting, reimagined</p>
-          <h1>Thoughtful gifts, <em>made personal.</em></h1>
-          <p className="hero-text">
-            Custom hampers, personalised gifts and beautiful little gestures—carefully put together for the people who matter to you.
+          <p className="eyebrow"><span /> Bespoke gifting studio · Jaipur</p>
+          <h1>
+            Gifts that say what words <em>sometimes can’t.</em>
+          </h1>
+          <p className="hero-intro">
+            Custom hampers, personalised keepsakes and floral gestures—thoughtfully curated for the people and moments that matter.
           </p>
+
           <div className="hero-actions">
-            <a className="button button-primary" href={whatsappUrl} target="_blank" rel="noreferrer">
+            <a className="button button-dark" href={whatsappUrl} target="_blank" rel="noreferrer">
               Order on WhatsApp <span aria-hidden="true">↗</span>
             </a>
-            <a className="simple-link" href="#gifts">See our work <span aria-hidden="true">↓</span></a>
+            <a className="text-link" href="#gifting">
+              Explore our gifting <span aria-hidden="true">↓</span>
+            </a>
           </div>
-          <p className="hero-location">Based in Jaipur, Rajasthan</p>
+
+          <div className="hero-signature" aria-label="Sheer brand definition">
+            <span className="signature-mark">S</span>
+            <p><strong>SHEER</strong> /ʃɪə/ <br />Utter, Pure, Simple</p>
+          </div>
         </div>
 
-        <div className="hero-visual">
-          <div className="hero-image-wrap">
+        <div className="hero-art" aria-label="A selection of Sheer Gifts creations">
+          <div className="hero-arch">
             <img
+              className="hero-primary-image"
               src="/brand/bride-to-be-hamper.jpg"
-              alt="A bespoke gift hamper by Sheer Gifts Jaipur"
-              width="760"
-              height="900"
+              alt="A personalised hamper by Sheer Gifts"
+              width="640"
+              height="800"
             />
+            <span className="image-note image-note-top">Made for their moment</span>
+            <span className="image-note image-note-bottom">Curated in Jaipur</span>
           </div>
-          <div className="hero-note">
-            <span>SHEER · /ʃɪə/</span>
-            <strong>Utter, Pure, Simple</strong>
+          <figure className="hero-polaroid">
+            <img
+              src="/brand/best-friend-memory-board.jpg"
+              alt="A personalised friendship memory board"
+              width="280"
+              height="350"
+            />
+            <figcaption>memories, made tangible</figcaption>
+          </figure>
+          <div className="hero-stamp" aria-hidden="true">
+            <span>Crafted for</span>
+            <strong>moments</strong>
+            <span>that matter</span>
           </div>
         </div>
       </section>
 
-      <section className="about section" id="about">
-        <div className="section-heading">
-          <p className="eyebrow"><span /> About us</p>
-          <h2>Gifts that feel like<br /><em>they were made for them.</em></h2>
+      <div className="marquee" aria-label="Sheer Gifts specialties">
+        <div>
+          <span>Custom hampers</span><b>✦</b>
+          <span>Personalised gifts</span><b>✦</b>
+          <span>Floral gestures</span><b>✦</b>
+          <span>Wedding moments</span><b>✦</b>
+          <span>Birthday surprises</span><b>✦</b>
         </div>
-        <div className="about-copy">
-          <p>
-            Sheer Gifts Jaipur is a bespoke gifting studio creating custom hampers and personalised gifts for life’s meaningful moments.
+      </div>
+
+      <section className="story section" id="story">
+        <div className="section-label">
+          <span>01</span>
+          <p>Why Sheer</p>
+        </div>
+        <div className="story-copy">
+          <p className="story-kicker">SHEER · /ʃɪə/ · adjective</p>
+          <h2>Utter. Pure. Simple.</h2>
+          <p className="story-lead">
+            We believe the best gifts feel less like things and more like a person saying, “I know you.”
           </p>
-          <p>
-            Every creation is brought together with thought, care and personal details—from favourite treats and flowers to photographs and handwritten memories.
-          </p>
-          <blockquote>“Crafted for moments that matter.”</blockquote>
+          <div className="story-detail">
+            <p>
+              That is why every Sheer creation begins with a moment: a birthday, a friendship, a wedding, a quiet thank-you—or simply a reason to make someone feel seen.
+            </p>
+            <p>
+              From personal notes and photographs to favourite treats and flowers, the details are brought together with intention and an unmistakably personal touch.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="gifts section" id="gifts">
-        <div className="gifts-heading">
+      <section className="gifting section" id="gifting">
+        <div className="section-heading-row">
           <div>
-            <p className="eyebrow"><span /> What we create</p>
-            <h2>Made with care.<br /><em>Given with love.</em></h2>
+            <p className="eyebrow"><span /> Our gifting</p>
+            <h2>Made around the person,<br /><em>not pulled from a shelf.</em></h2>
           </div>
-          <p>Every order can be different. Message us with your occasion and ideas to ask what is currently available.</p>
+          <p>
+            A glimpse into past Sheer creations. Every order can begin with a different story—WhatsApp us to ask what is currently available.
+          </p>
         </div>
 
-        <div className="gift-grid">
-          {gifts.map((gift) => (
-            <article className="gift-card" key={gift.title}>
-              <div className="gift-image">
-                <img src={gift.image} alt={gift.alt} width="680" height="760" loading="lazy" />
+        <div className="product-grid">
+          {giftingCategories.map((category, index) => (
+            <a
+              className={`product-card product-card-${index + 1}`}
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              key={category.title}
+              aria-label={`${category.title} — enquire on WhatsApp`}
+            >
+              <img src={category.image} alt={category.alt} width="700" height="780" loading="lazy" />
+              <span className="product-tag">{category.tag}</span>
+              <div className="product-card-copy">
+                <div>
+                  <p>0{index + 1}</p>
+                  <h3>{category.title}</h3>
+                  <span>{category.note}</span>
+                </div>
+                <b aria-hidden="true">↗</b>
               </div>
-              <h3>{gift.title}</h3>
-              <p>{gift.text}</p>
-            </article>
+            </a>
           ))}
         </div>
       </section>
 
-      <section className="gallery section" aria-labelledby="gallery-title">
-        <div className="gallery-title">
-          <p className="eyebrow"><span /> A few Sheer creations</p>
-          <h2 id="gallery-title">A little look at<br /><em>our work.</em></h2>
-        </div>
-        <div className="gallery-grid">
-          <img src="/brand/best-friend-memory-board.jpg" alt="Personalised friendship memory board" width="520" height="650" loading="lazy" />
-          <img src="/brand/bride-to-be-hamper.jpg" alt="Personalised bride-to-be hamper" width="520" height="650" loading="lazy" />
-          <img src="/brand/love-basket.jpg" alt="Custom love and celebration basket" width="520" height="650" loading="lazy" />
-          <img src="/brand/balloon-hamper.jpg" alt="Custom balloon hamper" width="520" height="650" loading="lazy" />
-        </div>
-        <a className="simple-link gallery-link" href={instagramUrl} target="_blank" rel="noreferrer">
-          See more on Instagram <span aria-hidden="true">↗</span>
-        </a>
-      </section>
-
-      <section className="contact" id="contact">
-        <div className="contact-copy">
-          <p className="eyebrow eyebrow-light"><span /> Contact & orders</p>
-          <h2>Have a gift<br />in mind?</h2>
-          <p>Tell us the occasion, who it is for and any ideas you have. We’ll take it from there.</p>
-          <a className="button button-whatsapp" href={whatsappUrl} target="_blank" rel="noreferrer">
-            Order on WhatsApp <span aria-hidden="true">↗</span>
+      <section className="signature section">
+        <div className="signature-panel">
+          <p className="eyebrow eyebrow-light"><span /> Signature gifting</p>
+          <h2>There is always a<br /><em>reason to gift.</em></h2>
+          <p className="signature-intro">
+            From intimate keepsakes to celebration-ready hampers, tell us the feeling and we’ll start there.
+          </p>
+          <div className="signature-list">
+            {signatureGifts.map((gift, index) => (
+              <div key={gift}>
+                <span>0{index + 1}</span>
+                <p>{gift}</p>
+                <b aria-hidden="true">↗</b>
+              </div>
+            ))}
+          </div>
+          <a className="button button-light" href={whatsappUrl} target="_blank" rel="noreferrer">
+            Ask about your occasion <span aria-hidden="true">↗</span>
           </a>
         </div>
 
-        <address className="contact-card">
-          <img src="/brand/sheer-gifts-logo.jpg" alt="Sheer Gifts Jaipur" width="96" height="96" />
-          <div>
-            <span>Business</span>
-            <strong>Sheer Gifts Jaipur</strong>
-            <p>Bespoke Luxury Hampers & Gifts</p>
-          </div>
-          <div>
-            <span>Location</span>
-            <strong>Jaipur, Rajasthan</strong>
-          </div>
-          <div>
-            <span>WhatsApp</span>
-            <a href={whatsappUrl} target="_blank" rel="noreferrer">+91 96360 57292 ↗</a>
-          </div>
-          <div>
-            <span>Instagram</span>
-            <a href={instagramUrl} target="_blank" rel="noreferrer">@sheergiftsjaipur ↗</a>
-          </div>
-        </address>
+        <div className="signature-gallery">
+          <figure className="gallery-main">
+            <img src="/brand/love-basket.jpg" alt="A personalised celebration hamper" width="700" height="700" loading="lazy" />
+          </figure>
+          <figure className="gallery-small">
+            <img src="/brand/balloon-hamper.jpg" alt="A balloon hamper by Sheer Gifts" width="420" height="520" loading="lazy" />
+          </figure>
+          <p className="gallery-caption">Tiny details.<br />Big feelings.</p>
+        </div>
+      </section>
+
+      <section className="faq section">
+        <div>
+          <p className="eyebrow"><span /> Good to know</p>
+          <h2>A few little<br /><em>details.</em></h2>
+        </div>
+        <div className="faq-list">
+          <details open>
+            <summary>Can the gifts be customised?<span>+</span></summary>
+            <p>Yes. Custom hampers and personalised gifts are at the heart of Sheer. Share your ideas, memories and preferences with us on WhatsApp.</p>
+          </details>
+          <details>
+            <summary>Where is Sheer Gifts based?<span>+</span></summary>
+            <p>Sheer Gifts is based in Jaipur, Rajasthan.</p>
+          </details>
+          <details>
+            <summary>Do you make seasonal or corporate hampers?<span>+</span></summary>
+            <p>Sheer has created seasonal and corporate gifts in the past. Please WhatsApp us to ask about current availability for your occasion or brief.</p>
+          </details>
+        </div>
+      </section>
+
+      <section className="closing-cta" id="contact">
+        <div className="closing-monogram" aria-hidden="true">S</div>
+        <p>Have a moment in mind?</p>
+        <h2>Let’s make it feel<br /><em>like them.</em></h2>
+        <a className="button button-dark" href={whatsappUrl} target="_blank" rel="noreferrer">
+          Order on WhatsApp <span aria-hidden="true">↗</span>
+        </a>
+        <a className="closing-whatsapp-number" href={whatsappUrl} target="_blank" rel="noreferrer">+91 82092 16121</a>
+        <span className="closing-note">Thoughtfully curated in Jaipur</span>
       </section>
 
       <footer>
-        <p>© 2026 Sheer Gifts Jaipur</p>
-        <p>Thoughtful gifting, reimagined.</p>
-        <a href="#top">Back to top ↑</a>
+        <a className="footer-brand" href="#top">
+          <img src="/brand/sheer-gifts-logo.jpg" alt="Sheer Gifts" width="88" height="88" />
+        </a>
+        <div>
+          <p>Custom hampers · Personalised gifts · Jaipur</p>
+          <a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp +91 82092 16121 ↗</a>
+          <a href={instagramUrl} target="_blank" rel="noreferrer">Instagram ↗</a>
+        </div>
+        <p>Crafted for moments that matter.</p>
       </footer>
 
       <a className="mobile-order" href={whatsappUrl} target="_blank" rel="noreferrer">
