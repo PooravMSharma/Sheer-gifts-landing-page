@@ -47,7 +47,7 @@ export default function HeroVideo() {
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       >
-        <source src="/brand/client/featured-wedding-hamper.mp4" type="video/mp4" />
+        <source src="/brand/client/Sheer-reel.MP4" type="video/mp4" />
       </video>
       <button
         className="hero-video-control"

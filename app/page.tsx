@@ -166,7 +166,7 @@ export default function Home() {
             <img src="/brand/client/wellness-hamper.jpeg" alt="A cream and gold wellness hamper with bath and body products" width="960" height="1280" loading="lazy" />
           </figure>
           <figure className="gallery-small">
-            <img src="/brand/client/pink-ribbon-gift-box.jpeg" alt="A pink gift box finished with a bright ribbon and pearl details" width="960" height="1280" loading="lazy" />
+            <img src="/brand/client/new-hamper.jpeg" alt="A pink gift box finished with a bright ribbon and pearl details" width="960" height="500" loading="lazy" />
           </figure>
         </div>
       </section>
