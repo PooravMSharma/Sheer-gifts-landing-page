@@ -1,39 +1,9 @@
+import GiftingGallery from "./gifting-gallery";
 import HeroVideo from "./hero-video";
 
 const instagramUrl = "https://www.instagram.com/sheergiftsjaipur/";
 const whatsappUrl =
   "https://wa.me/918209216121?text=Hi%20Sheer%20Gifts%20Jaipur!%20I%20would%20like%20to%20place%20an%20order.";
-
-const giftingCategories = [
-  {
-    title: "Custom hampers",
-    note: "Curated around the person, the occasion and the feeling you want to send.",
-    image: "/brand/client/custom-bridal-hamper.jpeg",
-    alt: "A personalised bridal hamper with flowers, photographs, chocolates and a teddy",
-    tag: "Made personal",
-  },
-  {
-    title: "Memory gifts",
-    note: "Photos, notes and tiny details come together in keepsakes that feel unmistakably theirs.",
-    image: "/brand/client/birthday-memory-frame.jpeg",
-    alt: "A framed birthday collage made with photographs and personal memories",
-    tag: "Friendship & birthdays",
-  },
-  {
-    title: "Celebration boxes",
-    note: "A joyful mix of treats, flowers and personal touches for moments worth marking.",
-    image: "/brand/client/celebration-memory-box.jpeg",
-    alt: "An open celebration box with photographs, flowers, snacks and keepsakes",
-    tag: "Love & milestones",
-  },
-  {
-    title: "Wedding hampers",
-    note: "First invitations and wedding moments, styled with keepsakes, treats and meaningful details.",
-    image: "/brand/client/wedding-invitation-hamper.jpeg",
-    alt: "A red and gold first wedding invitation hamper with dry fruits and keepsakes",
-    tag: "New beginnings",
-  },
-];
 
 const signatureGifts = [
   "Custom hampers",
@@ -167,29 +137,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="product-grid">
-          {giftingCategories.map((category, index) => (
-            <a
-              className={`product-card product-card-${index + 1}`}
-              href={whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-              key={category.title}
-              aria-label={`${category.title} — enquire on WhatsApp`}
-            >
-              <img src={category.image} alt={category.alt} width="700" height="780" loading="lazy" />
-              <span className="product-tag">{category.tag}</span>
-              <div className="product-card-copy">
-                <div>
-                  <p>0{index + 1}</p>
-                  <h3>{category.title}</h3>
-                  <span>{category.note}</span>
-                </div>
-                <b aria-hidden="true">↗</b>
-              </div>
-            </a>
-          ))}
-        </div>
+        <GiftingGallery whatsappUrl={whatsappUrl} />
       </section>
 
       <section className="signature section">
