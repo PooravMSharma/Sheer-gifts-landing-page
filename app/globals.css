@@ -1061,19 +1061,37 @@ footer a:hover::after {
 .gallery-main {
   position: absolute;
   inset: 0;
+  z-index: 0;
   margin: 0;
+  overflow: hidden;
+  background: #d8c8bb;
+}
+
+.gallery-main::before {
+  content: "";
+  position: absolute;
+  inset: -34px;
+  z-index: 0;
+  background: url("/brand/client/wellness-hamper.jpeg") center / cover no-repeat;
+  filter: blur(25px) saturate(0.72);
+  opacity: 0.48;
+  transform: scale(1.08);
 }
 
 .gallery-main img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .gallery-small {
   position: absolute;
   right: 5%;
   bottom: 6%;
+  z-index: 2;
   width: 40%;
   margin: 0;
   padding: 10px 10px 28px;
@@ -1085,13 +1103,16 @@ footer a:hover::after {
 .gallery-small img {
   width: 100%;
   aspect-ratio: 0.82;
-  object-fit: cover;
+  background: #eee4dd;
+  object-fit: contain;
+  object-position: center;
 }
 
 .gallery-caption {
   position: absolute;
   bottom: 9%;
   left: 6%;
+  z-index: 3;
   padding: 16px 19px;
   background: rgba(255, 250, 246, 0.88);
   font-family: var(--display);
