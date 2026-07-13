@@ -1,3 +1,5 @@
+import HeroVideo from "./hero-video";
+
 const instagramUrl = "https://www.instagram.com/sheergiftsjaipur/";
 const whatsappUrl =
   "https://wa.me/918209216121?text=Hi%20Sheer%20Gifts%20Jaipur!%20I%20would%20like%20to%20place%20an%20order.";
@@ -6,30 +8,30 @@ const giftingCategories = [
   {
     title: "Custom hampers",
     note: "Curated around the person, the occasion and the feeling you want to send.",
-    image: "/brand/bride-to-be-hamper.jpg",
-    alt: "A personalised Sheer Gifts bride-to-be hamper",
+    image: "/brand/client/custom-bridal-hamper.jpeg",
+    alt: "A personalised bridal hamper with flowers, photographs, chocolates and a teddy",
     tag: "Made personal",
   },
   {
     title: "Memory gifts",
     note: "Photos, notes and tiny details come together in keepsakes that feel unmistakably theirs.",
-    image: "/brand/best-friend-memory-board.jpg",
-    alt: "A handmade birthday memory board by Sheer Gifts",
+    image: "/brand/client/birthday-memory-frame.jpeg",
+    alt: "A framed birthday collage made with photographs and personal memories",
     tag: "Friendship & birthdays",
   },
   {
     title: "Celebration boxes",
     note: "A joyful mix of treats, flowers and personal touches for moments worth marking.",
-    image: "/brand/love-basket.jpg",
-    alt: "A love basket with snacks, flowers and photographs",
+    image: "/brand/client/celebration-memory-box.jpeg",
+    alt: "An open celebration box with photographs, flowers, snacks and keepsakes",
     tag: "Love & milestones",
   },
   {
-    title: "Balloon hampers",
-    note: "A playful statement gift, styled with favourite treats and messages from the heart.",
-    image: "/brand/balloon-hamper.jpg",
-    alt: "A customised balloon hamper with flowers and treats",
-    tag: "Big little surprises",
+    title: "Wedding hampers",
+    note: "First invitations and wedding moments, styled with keepsakes, treats and meaningful details.",
+    image: "/brand/client/wedding-invitation-hamper.jpeg",
+    alt: "A red and gold first wedding invitation hamper with dry fruits and keepsakes",
+    tag: "New beginnings",
   },
 ];
 
@@ -100,24 +102,18 @@ export default function Home() {
 
         <div className="hero-art" aria-label="A selection of Sheer Gifts creations">
           <div className="hero-arch">
-            <img
-              className="hero-primary-image"
-              src="/brand/bride-to-be-hamper.jpg"
-              alt="A personalised hamper by Sheer Gifts"
-              width="640"
-              height="800"
-            />
+            <HeroVideo />
             <span className="image-note image-note-top">Made for their moment</span>
             <span className="image-note image-note-bottom">Curated in Jaipur</span>
           </div>
           <figure className="hero-polaroid">
             <img
-              src="/brand/best-friend-memory-board.jpg"
-              alt="A personalised friendship memory board"
+              src="/brand/client/branded-pink-box.jpeg"
+              alt="A Sheer Gifts box wrapped with a pink ribbon"
               width="280"
               height="350"
             />
-            <figcaption>memories, made tangible</figcaption>
+            <figcaption>beautifully wrapped, always personal</figcaption>
           </figure>
           <div className="hero-stamp" aria-hidden="true">
             <span>Crafted for</span>
@@ -218,10 +214,10 @@ export default function Home() {
 
         <div className="signature-gallery">
           <figure className="gallery-main">
-            <img src="/brand/love-basket.jpg" alt="A personalised celebration hamper" width="700" height="700" loading="lazy" />
+            <img src="/brand/client/pink-ribbon-gift-box.jpeg" alt="A pink gift box finished with a bright ribbon and pearl details" width="700" height="700" loading="lazy" />
           </figure>
           <figure className="gallery-small">
-            <img src="/brand/balloon-hamper.jpg" alt="A balloon hamper by Sheer Gifts" width="420" height="520" loading="lazy" />
+            <img src="/brand/client/wellness-hamper.jpeg" alt="A cream and gold wellness hamper with bath and body products" width="420" height="520" loading="lazy" />
           </figure>
           <p className="gallery-caption">Tiny details.<br />Big feelings.</p>
         </div>
