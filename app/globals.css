@@ -363,7 +363,7 @@ footer a:hover::after {
   background: var(--blush-deep);
   object-fit: cover;
   object-position: center;
-  filter: brightness(150%);
+  filter: brightness(85%);
 }
 
 .hero-video-control {
