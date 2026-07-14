@@ -225,6 +225,70 @@ export default function Home() {
             </blockquote>
             <p className="feedback-context">Made exactly to the brief</p>
           </article>
+
+          <article className="feedback-card feedback-card-3">
+            <figure className="feedback-shot">
+              <img
+                src="/brand/client/customer-feedback-birthday-gift-box.jpeg"
+                alt="Customer feedback praising a beautifully packaged birthday gift box, thoughtful details, quick service and customisation options"
+                width="739"
+                height="1600"
+                loading="lazy"
+              />
+            </figure>
+            <blockquote>
+              “I absolutely loved the gift box! From the beautiful packaging to the thoughtful personal touches, everything was done so perfectly.”
+            </blockquote>
+            <p className="feedback-context">A memorable birthday gift</p>
+          </article>
+
+          <article className="feedback-card feedback-card-4">
+            <figure className="feedback-shot">
+              <img
+                src="/brand/client/customer-feedback-wedding-invitation.jpeg"
+                alt="Customer feedback praising an elegant wedding invitation hamper and wholeheartedly recommending Sheer Gifts"
+                width="739"
+                height="1600"
+                loading="lazy"
+              />
+            </figure>
+            <blockquote>
+              “Every detail was thoughtfully designed, and the presentation was elegant and beyond our expectations. We wholeheartedly recommend your work.”
+            </blockquote>
+            <p className="feedback-context">A wedding invitation hamper</p>
+          </article>
+
+          <article className="feedback-card feedback-card-5">
+            <figure className="feedback-shot">
+              <img
+                src="/brand/client/customer-feedback-gift-hamper.jpeg"
+                alt="Customer feedback saying the gift hamper was beautifully packed and the quality of the items was excellent"
+                width="739"
+                height="1600"
+                loading="lazy"
+              />
+            </figure>
+            <blockquote>
+              “Loved the gift hamper! Beautifully packed and the quality of the items was excellent. Thank you!”
+            </blockquote>
+            <p className="feedback-context">Beautifully packed</p>
+          </article>
+
+          <article className="feedback-card feedback-card-6">
+            <figure className="feedback-shot">
+              <img
+                src="/brand/client/customer-feedback-bride-to-be.jpeg"
+                alt="Customer feedback praising a thoughtful bride-to-be hamper, dreamy decor and attention to every detail"
+                width="739"
+                height="1600"
+                loading="lazy"
+              />
+            </figure>
+            <blockquote>
+              “The hamper was absolutely beautiful—thoughtful, emotional and perfectly curated for my best friend’s bride-to-be celebration.”
+            </blockquote>
+            <p className="feedback-context">A bride-to-be celebration</p>
+          </article>
         </div>
       </section>
 

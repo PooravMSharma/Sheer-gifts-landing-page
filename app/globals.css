@@ -1172,6 +1172,17 @@ footer a:hover::after {
   transform: rotate(1.6deg);
 }
 
+.feedback-card-3,
+.feedback-card-5 {
+  transform: rotate(-1deg);
+}
+
+.feedback-card-4,
+.feedback-card-6 {
+  margin-top: 76px;
+  transform: rotate(1deg);
+}
+
 .feedback-shot {
   aspect-ratio: 1.12;
   margin: 0;
@@ -1191,6 +1202,22 @@ footer a:hover::after {
 
 .feedback-card-2 .feedback-shot img {
   object-position: center 56%;
+}
+
+.feedback-card-3 .feedback-shot img {
+  object-position: center 45%;
+}
+
+.feedback-card-4 .feedback-shot img {
+  object-position: center 35%;
+}
+
+.feedback-card-5 .feedback-shot img {
+  object-position: center 48%;
+}
+
+.feedback-card-6 .feedback-shot img {
+  object-position: center 43%;
 }
 
 .feedback-card blockquote {
@@ -1511,7 +1538,11 @@ footer > p {
   }
 
   .feedback-card-1,
-  .feedback-card-2 {
+  .feedback-card-2,
+  .feedback-card-3,
+  .feedback-card-4,
+  .feedback-card-5,
+  .feedback-card-6 {
     margin-top: 0;
     transform: none;
   }
