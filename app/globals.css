@@ -1161,18 +1161,24 @@ footer a:hover::after {
   min-width: 0;
   overflow: hidden;
   padding: 28px 0 72px;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
   mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.feedback-carousel.is-dragging {
+  cursor: grabbing;
+}
+
+.feedback-carousel:focus-visible {
+  outline: 2px solid var(--rose-dark);
+  outline-offset: 5px;
 }
 
 .feedback-track {
   width: max-content;
   display: flex;
-  will-change: transform;
-  animation: feedback-round 40s linear infinite;
-}
-
-.feedback-carousel:hover .feedback-track {
-  animation-play-state: paused;
 }
 
 .feedback-set {
@@ -1208,12 +1214,6 @@ footer a:hover::after {
 .feedback-card-4,
 .feedback-card-6 {
   transform: rotate(1deg);
-}
-
-@keyframes feedback-round {
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 .feedback-shot {
@@ -1569,24 +1569,14 @@ footer > p {
     width: calc(100% + 48px);
     margin-inline: -24px;
     padding: 12px 24px 44px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-inline: contain;
-    scroll-snap-type: inline mandatory;
-    scroll-padding-inline: 24px;
+    overflow: hidden;
     scrollbar-width: none;
-    touch-action: pan-x pan-y;
+    touch-action: pan-y;
     mask-image: none;
-    -webkit-overflow-scrolling: touch;
   }
 
   .feedback-carousel::-webkit-scrollbar {
     display: none;
-  }
-
-  .feedback-track {
-    animation: none;
-    will-change: auto;
   }
 
   .feedback-set {
@@ -1594,15 +1584,9 @@ footer > p {
     padding-right: 24px;
   }
 
-  .feedback-set[aria-hidden="true"] {
-    display: none;
-  }
-
   .feedback-card {
     flex-basis: min(74vw, 292px);
     padding: 9px 9px 25px;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
   }
 
   .feedback-card-1,

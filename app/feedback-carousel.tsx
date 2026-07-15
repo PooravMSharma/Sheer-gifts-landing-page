@@ -45,7 +45,7 @@ function ReviewCards({ duplicate = false }: { duplicate?: boolean }) {
       aria-hidden={duplicate || undefined}
     >
       <figure className="feedback-shot">
-        <img src={review.image} alt={duplicate ? "" : review.alt} width="739" height="1600" loading="lazy" />
+        <img src={review.image} alt={duplicate ? "" : review.alt} width="739" height="1600" loading="lazy" draggable="false" />
       </figure>
       <blockquote>“{review.quote}”</blockquote>
       <p className="feedback-context">{review.context}</p>
@@ -54,8 +54,109 @@ function ReviewCards({ duplicate = false }: { duplicate?: boolean }) {
 }
 
 export default function FeedbackCarousel() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const pausedRef = useRef(false);
+  const draggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartScrollRef = useRef(0);
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const keepInLoop = (value: number) => {
+    const carousel = carouselRef.current;
+    if (!carousel) return value;
+    const loopWidth = carousel.scrollWidth / 2;
+    if (!loopWidth) return value;
+    return ((value % loopWidth) + loopWidth) % loopWidth;
+  };
+
+  const resumeSoon = () => {
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => {
+      pausedRef.current = false;
+    }, 900);
+  };
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let animationFrame = 0;
+    let previousTime = performance.now();
+
+    const animate = (time: number) => {
+      const elapsed = Math.min(time - previousTime, 50);
+      previousTime = time;
+
+      if (!pausedRef.current && !reducedMotion) {
+        carousel.scrollLeft = keepInLoop(carousel.scrollLeft + elapsed * 0.032);
+      }
+
+      animationFrame = window.requestAnimationFrame(animate);
+    };
+
+    animationFrame = window.requestAnimationFrame(animate);
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    };
+  }, []);
+
+  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    pausedRef.current = true;
+    draggingRef.current = true;
+    dragStartXRef.current = event.clientX;
+    dragStartScrollRef.current = event.currentTarget.scrollLeft;
+    event.currentTarget.setPointerCapture(event.pointerId);
+    event.currentTarget.classList.add("is-dragging");
+  };
+
+  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!draggingRef.current) return;
+    event.preventDefault();
+    const distance = event.clientX - dragStartXRef.current;
+    event.currentTarget.scrollLeft = keepInLoop(dragStartScrollRef.current - distance);
+  };
+
+  const finishDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!draggingRef.current) return;
+    draggingRef.current = false;
+    event.currentTarget.classList.remove("is-dragging");
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    if (event.pointerType !== "mouse") resumeSoon();
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    pausedRef.current = true;
+    const direction = event.key === "ArrowRight" ? 1 : -1;
+    event.currentTarget.scrollLeft = keepInLoop(event.currentTarget.scrollLeft + direction * 320);
+    resumeSoon();
+  };
+
   return (
-    <div className="feedback-carousel" aria-label="Customer reviews">
+    <div
+      className="feedback-carousel"
+      ref={carouselRef}
+      aria-label="Customer reviews. Swipe or drag to browse."
+      role="region"
+      tabIndex={0}
+      onPointerEnter={(event) => {
+        if (event.pointerType === "mouse") pausedRef.current = true;
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === "mouse" && !draggingRef.current) pausedRef.current = false;
+      }}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={finishDrag}
+      onPointerCancel={finishDrag}
+      onKeyDown={handleKeyDown}
+    >
       <div className="feedback-track">
         <div className="feedback-set"><ReviewCards /></div>
         <div className="feedback-set" aria-hidden="true"><ReviewCards duplicate /></div>
@@ -63,3 +164,7 @@ export default function FeedbackCarousel() {
     </div>
   );
 }
+"use client";
+
+import { useEffect, useRef } from "react";
+import type { KeyboardEvent, PointerEvent as ReactPointerEvent } from "react";
