@@ -1168,7 +1168,7 @@ footer a:hover::after {
   width: max-content;
   display: flex;
   will-change: transform;
-  animation: feedback-round 38s linear infinite;
+  animation: feedback-round 40s linear infinite;
 }
 
 .feedback-carousel:hover .feedback-track {
@@ -1184,10 +1184,12 @@ footer a:hover::after {
 
 .feedback-card {
   flex: 0 0 clamp(280px, 24vw, 380px);
+  margin: 0;
   padding: 11px 11px 30px;
   border: 1px solid rgba(24, 19, 19, 0.12);
   background: var(--paper);
   box-shadow: 0 26px 70px rgba(79, 51, 47, 0.12);
+  backface-visibility: hidden;
 }
 
 .feedback-card-1 {
@@ -1570,18 +1572,23 @@ footer > p {
     mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
   }
 
-  .feedback-track {
-    animation-duration: 30s;
-  }
-
   .feedback-set {
-    gap: 14px;
-    padding-right: 14px;
+    gap: 26px;
+    padding-right: 26px;
   }
 
   .feedback-card {
-    flex-basis: min(76vw, 300px);
+    flex-basis: min(74vw, 292px);
     padding: 9px 9px 25px;
+  }
+
+  .feedback-card-1,
+  .feedback-card-2,
+  .feedback-card-3,
+  .feedback-card-4,
+  .feedback-card-5,
+  .feedback-card-6 {
+    transform: none;
   }
 
   .feedback-shot {
