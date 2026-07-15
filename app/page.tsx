@@ -41,8 +41,8 @@ export default function Home() {
           <a href="#contact">Contact</a>
         </nav>
 
-        <a className="header-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
-          Order on WhatsApp <span aria-hidden="true">↗</span>
+        <a className="header-cta" href={instagramUrl} target="_blank" rel="noreferrer">
+          Follow on Instagram <span aria-hidden="true">↗</span>
         </a>
       </header>
 
