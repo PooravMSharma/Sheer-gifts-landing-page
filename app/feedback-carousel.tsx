@@ -119,7 +119,7 @@ export default function FeedbackCarousel() {
         card.style.setProperty("--orbit-y", `${depth * radiusY}px`);
         card.style.setProperty("--orbit-rotate", `${side * -13}deg`);
         card.style.setProperty("--orbit-scale", `${0.78 + frontness * 0.24}`);
-        card.style.setProperty("--orbit-opacity", `${0.58 + frontness * 0.42}`);
+        card.style.setProperty("--orbit-opacity", `${0.24 + Math.pow(frontness, 5) * 0.76}`);
         card.style.zIndex = `${Math.round(frontness * 100)}`;
       });
     };

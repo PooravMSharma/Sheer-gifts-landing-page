@@ -1253,8 +1253,8 @@ footer a:hover::after {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: clamp(280px, 25vw, 380px);
-    height: clamp(500px, 39vw, 570px);
+    width: clamp(252px, 22.5vw, 342px);
+    height: clamp(450px, 35.1vw, 513px);
     overflow: hidden;
     opacity: var(--orbit-opacity, 1);
     transform: translate(-50%, -50%)
