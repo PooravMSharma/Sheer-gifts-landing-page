@@ -64,6 +64,8 @@ export default function FeedbackCarousel() {
   const draggingRef = useRef(false);
   const dragStartXRef = useRef(0);
   const dragStartScrollRef = useRef(0);
+  const dragStartPhaseRef = useRef(0);
+  const orbitPhaseRef = useRef(0);
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const keepInLoop = (value: number) => {
@@ -87,38 +89,38 @@ export default function FeedbackCarousel() {
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const desktopLayout = window.matchMedia("(min-width: 621px)");
-    const cards = Array.from(carousel.querySelectorAll<HTMLElement>(".feedback-card"));
+    const cards = Array.from(carousel.querySelectorAll<HTMLElement>(".feedback-set:first-child .feedback-card"));
     let animationFrame = 0;
     let previousTime = performance.now();
 
-    const renderDepth = () => {
+    const renderOrbit = () => {
       if (!desktopLayout.matches || reducedMotion) {
         cards.forEach((card) => {
-          card.style.removeProperty("--carousel-rotate");
-          card.style.removeProperty("--carousel-scale");
-          card.style.removeProperty("--carousel-depth");
-          card.style.removeProperty("--carousel-lift");
-          card.style.removeProperty("--carousel-opacity");
+          card.style.removeProperty("--orbit-x");
+          card.style.removeProperty("--orbit-y");
+          card.style.removeProperty("--orbit-rotate");
+          card.style.removeProperty("--orbit-scale");
+          card.style.removeProperty("--orbit-opacity");
           card.style.removeProperty("z-index");
         });
         return;
       }
 
-      const carouselBox = carousel.getBoundingClientRect();
-      const carouselCenter = carouselBox.left + carouselBox.width / 2;
+      const radiusX = Math.min(carousel.clientWidth * 0.29, 285);
+      const radiusY = Math.min(carousel.clientHeight * 0.18, 115);
 
-      cards.forEach((card) => {
-        const cardBox = card.getBoundingClientRect();
-        const distance = (cardBox.left + cardBox.width / 2 - carouselCenter) / carouselBox.width;
-        const limited = Math.max(-1.25, Math.min(1.25, distance));
-        const strength = Math.min(1, Math.abs(limited));
+      cards.forEach((card, index) => {
+        const angle = ((index - orbitPhaseRef.current) / cards.length) * Math.PI * 2;
+        const depth = Math.cos(angle);
+        const side = Math.sin(angle);
+        const frontness = (depth + 1) / 2;
 
-        card.style.setProperty("--carousel-rotate", `${limited * -34}deg`);
-        card.style.setProperty("--carousel-scale", `${1.035 - strength * 0.13}`);
-        card.style.setProperty("--carousel-depth", `${68 - strength * 105}px`);
-        card.style.setProperty("--carousel-lift", `${strength * 25}px`);
-        card.style.setProperty("--carousel-opacity", `${1 - strength * 0.25}`);
-        card.style.zIndex = `${Math.round((1 - strength) * 10)}`;
+        card.style.setProperty("--orbit-x", `${side * radiusX}px`);
+        card.style.setProperty("--orbit-y", `${depth * radiusY}px`);
+        card.style.setProperty("--orbit-rotate", `${side * -13}deg`);
+        card.style.setProperty("--orbit-scale", `${0.78 + frontness * 0.24}`);
+        card.style.setProperty("--orbit-opacity", `${0.58 + frontness * 0.42}`);
+        card.style.zIndex = `${Math.round(frontness * 100)}`;
       });
     };
 
@@ -127,10 +129,14 @@ export default function FeedbackCarousel() {
       previousTime = time;
 
       if (!pausedRef.current && !reducedMotion) {
-        carousel.scrollLeft = keepInLoop(carousel.scrollLeft + elapsed * 0.032);
+        if (desktopLayout.matches) {
+          orbitPhaseRef.current = (orbitPhaseRef.current + elapsed * 0.0002) % cards.length;
+        } else {
+          carousel.scrollLeft = keepInLoop(carousel.scrollLeft + elapsed * 0.032);
+        }
       }
 
-      renderDepth();
+      renderOrbit();
 
       animationFrame = window.requestAnimationFrame(animate);
     };
@@ -148,6 +154,7 @@ export default function FeedbackCarousel() {
     draggingRef.current = true;
     dragStartXRef.current = event.clientX;
     dragStartScrollRef.current = event.currentTarget.scrollLeft;
+    dragStartPhaseRef.current = orbitPhaseRef.current;
     event.currentTarget.setPointerCapture(event.pointerId);
     event.currentTarget.classList.add("is-dragging");
   };
@@ -156,7 +163,11 @@ export default function FeedbackCarousel() {
     if (!draggingRef.current) return;
     event.preventDefault();
     const distance = event.clientX - dragStartXRef.current;
-    event.currentTarget.scrollLeft = keepInLoop(dragStartScrollRef.current - distance);
+    if (window.matchMedia("(min-width: 621px)").matches) {
+      orbitPhaseRef.current = dragStartPhaseRef.current - distance / 220;
+    } else {
+      event.currentTarget.scrollLeft = keepInLoop(dragStartScrollRef.current - distance);
+    }
   };
 
   const finishDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -174,7 +185,11 @@ export default function FeedbackCarousel() {
     event.preventDefault();
     pausedRef.current = true;
     const direction = event.key === "ArrowRight" ? 1 : -1;
-    event.currentTarget.scrollLeft = keepInLoop(event.currentTarget.scrollLeft + direction * 320);
+    if (window.matchMedia("(min-width: 621px)").matches) {
+      orbitPhaseRef.current += direction;
+    } else {
+      event.currentTarget.scrollLeft = keepInLoop(event.currentTarget.scrollLeft + direction * 320);
+    }
     resumeSoon();
   };
 
