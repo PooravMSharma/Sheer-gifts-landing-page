@@ -79,7 +79,7 @@ export default function Home() {
           </div>
           <figure className="hero-polaroid">
             <img
-              src="/brand/client/branded-pink-box.jpeg"
+              src="/brand/client/pink-box.jpeg"
               alt="A Sheer Gifts box wrapped with a pink ribbon"
               width="280"
               height="350"
