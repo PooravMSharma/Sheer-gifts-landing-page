@@ -1266,10 +1266,18 @@ footer a:hover::after {
   }
 
   .feedback-card.is-front-review,
-  .feedback-card.is-front-review .feedback-shot,
-  .feedback-card.is-front-review .feedback-shot img {
+  .feedback-card.is-front-review .feedback-shot {
     opacity: 1 !important;
     filter: none !important;
+    isolation: isolate;
+  }
+
+  .feedback-card.is-front-review .feedback-shot img {
+    position: relative;
+    z-index: 2;
+    opacity: 1 !important;
+    mix-blend-mode: normal;
+    filter: brightness(1.08) contrast(1.18) saturate(1.2) !important;
   }
 }
 
