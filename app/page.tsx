@@ -66,7 +66,7 @@ export default function Home() {
           </div>
 
           <div className="hero-signature" aria-label="Sheer brand definition">
-            <span className="signature-mark">S</span>
+            {/* <span className="signature-mark">S</span> */}
             <p><strong>SHEER</strong> /ʃɪə/ <br />Utter, Pure, Simple</p>
           </div>
         </div>
