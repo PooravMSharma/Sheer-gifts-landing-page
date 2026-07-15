@@ -1927,6 +1927,13 @@ footer > p {
     bottom: -1%;
   }
 
+  .hero-polaroid img {
+    height: clamp(118px, 39vw, 205px);
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center;
+  }
+
   .hero-stamp {
     right: -2%;
     bottom: -3%;
