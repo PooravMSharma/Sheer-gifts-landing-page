@@ -1216,6 +1216,34 @@ footer a:hover::after {
   transform: rotate(1deg);
 }
 
+@media (min-width: 621px) {
+  .feedback-carousel {
+    perspective: 1200px;
+  }
+
+  .feedback-track,
+  .feedback-set {
+    transform-style: preserve-3d;
+  }
+
+  .feedback-card,
+  .feedback-card-1,
+  .feedback-card-2,
+  .feedback-card-3,
+  .feedback-card-4,
+  .feedback-card-5,
+  .feedback-card-6 {
+    opacity: var(--carousel-opacity, 1);
+    transform: perspective(950px)
+      translateY(var(--carousel-lift, 0px))
+      rotateY(var(--carousel-rotate, 0deg))
+      translateZ(var(--carousel-depth, 0px))
+      scale(var(--carousel-scale, 1));
+    transform-origin: center center;
+    will-change: transform, opacity;
+  }
+}
+
 .feedback-shot {
   aspect-ratio: 1.12;
   margin: 0;

@@ -1,3 +1,8 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import type { KeyboardEvent, PointerEvent as ReactPointerEvent } from "react";
+
 const reviews = [
   {
     image: "/brand/client/customer-feedback-best-friend.jpeg",
@@ -81,8 +86,41 @@ export default function FeedbackCarousel() {
     if (!carousel) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const desktopLayout = window.matchMedia("(min-width: 621px)");
+    const cards = Array.from(carousel.querySelectorAll<HTMLElement>(".feedback-card"));
     let animationFrame = 0;
     let previousTime = performance.now();
+
+    const renderDepth = () => {
+      if (!desktopLayout.matches || reducedMotion) {
+        cards.forEach((card) => {
+          card.style.removeProperty("--carousel-rotate");
+          card.style.removeProperty("--carousel-scale");
+          card.style.removeProperty("--carousel-depth");
+          card.style.removeProperty("--carousel-lift");
+          card.style.removeProperty("--carousel-opacity");
+          card.style.removeProperty("z-index");
+        });
+        return;
+      }
+
+      const carouselBox = carousel.getBoundingClientRect();
+      const carouselCenter = carouselBox.left + carouselBox.width / 2;
+
+      cards.forEach((card) => {
+        const cardBox = card.getBoundingClientRect();
+        const distance = (cardBox.left + cardBox.width / 2 - carouselCenter) / carouselBox.width;
+        const limited = Math.max(-1.25, Math.min(1.25, distance));
+        const strength = Math.min(1, Math.abs(limited));
+
+        card.style.setProperty("--carousel-rotate", `${limited * -34}deg`);
+        card.style.setProperty("--carousel-scale", `${1.035 - strength * 0.13}`);
+        card.style.setProperty("--carousel-depth", `${68 - strength * 105}px`);
+        card.style.setProperty("--carousel-lift", `${strength * 25}px`);
+        card.style.setProperty("--carousel-opacity", `${1 - strength * 0.25}`);
+        card.style.zIndex = `${Math.round((1 - strength) * 10)}`;
+      });
+    };
 
     const animate = (time: number) => {
       const elapsed = Math.min(time - previousTime, 50);
@@ -91,6 +129,8 @@ export default function FeedbackCarousel() {
       if (!pausedRef.current && !reducedMotion) {
         carousel.scrollLeft = keepInLoop(carousel.scrollLeft + elapsed * 0.032);
       }
+
+      renderDepth();
 
       animationFrame = window.requestAnimationFrame(animate);
     };
@@ -164,7 +204,3 @@ export default function FeedbackCarousel() {
     </div>
   );
 }
-"use client";
-
-import { useEffect, useRef } from "react";
-import type { KeyboardEvent, PointerEvent as ReactPointerEvent } from "react";
