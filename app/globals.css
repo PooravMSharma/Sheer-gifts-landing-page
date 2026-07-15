@@ -1568,18 +1568,41 @@ footer > p {
   .feedback-carousel {
     width: calc(100% + 48px);
     margin-inline: -24px;
-    padding: 12px 0 44px;
-    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    padding: 12px 24px 44px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 24px;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+    mask-image: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .feedback-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .feedback-track {
+    animation: none;
+    will-change: auto;
   }
 
   .feedback-set {
-    gap: 26px;
-    padding-right: 26px;
+    gap: 18px;
+    padding-right: 24px;
+  }
+
+  .feedback-set[aria-hidden="true"] {
+    display: none;
   }
 
   .feedback-card {
     flex-basis: min(74vw, 292px);
     padding: 9px 9px 25px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .feedback-card-1,
