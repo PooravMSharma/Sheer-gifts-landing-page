@@ -1560,8 +1560,8 @@ footer > p {
   .feedback-card-5,
   .feedback-card-6 {
     position: relative;
-    width: min(92%, 390px);
-    margin-top: clamp(-68px, -16vw, -48px);
+    width: min(78%, 310px);
+    margin-top: clamp(-58px, -14vw, -42px);
     transform-origin: center top;
     transition: transform 220ms ease, box-shadow 220ms ease;
   }
@@ -1569,42 +1569,44 @@ footer > p {
   .feedback-card-1 {
     z-index: 1;
     margin-top: 0;
-    width: 91%;
-    transform: translateX(-3%) rotate(-3deg);
+    width: min(77%, 305px);
+    align-self: flex-start;
+    transform: rotate(-3deg);
   }
 
   .feedback-card-2 {
     z-index: 2;
-    width: 88%;
+    width: min(73%, 290px);
     align-self: flex-end;
-    transform: translateX(2%) rotate(3.2deg);
+    transform: rotate(3.2deg);
   }
 
   .feedback-card-3 {
     z-index: 3;
-    width: 90%;
+    width: min(76%, 300px);
     align-self: flex-start;
-    transform: translateX(2%) rotate(-2.4deg);
+    transform: rotate(-2.4deg);
   }
 
   .feedback-card-4 {
     z-index: 4;
-    width: 87%;
+    width: min(72%, 288px);
     align-self: flex-end;
-    transform: translateX(-2%) rotate(2.8deg);
+    transform: rotate(2.8deg);
   }
 
   .feedback-card-5 {
     z-index: 5;
-    width: 90%;
+    width: min(76%, 300px);
     align-self: flex-start;
-    transform: translateX(-1%) rotate(-3.1deg);
+    transform: rotate(-3.1deg);
   }
 
   .feedback-card-6 {
     z-index: 6;
-    width: 89%;
-    transform: translateX(3%) rotate(2.3deg);
+    width: min(74%, 294px);
+    align-self: flex-end;
+    transform: rotate(2.3deg);
   }
 
   .feedback-shot {
@@ -1786,31 +1788,31 @@ footer > p {
 
   .product-card-1 {
     z-index: 1;
-    width: 92%;
+    width: min(84%, 450px);
     align-self: flex-start;
     margin-top: 0;
-    transform: translateX(1%) rotate(-3.2deg);
+    transform: rotate(-3.2deg);
   }
 
   .product-card-2 {
     z-index: 2;
-    width: 88%;
+    width: min(80%, 430px);
     align-self: flex-end;
-    transform: translateX(-1%) rotate(3.5deg);
+    transform: rotate(3.5deg);
   }
 
   .product-card-3 {
     z-index: 3;
-    width: 91%;
+    width: min(84%, 450px);
     align-self: flex-start;
-    transform: translateX(3%) rotate(-2.5deg);
+    transform: rotate(-2.5deg);
   }
 
   .product-card-4 {
     z-index: 4;
-    width: 89%;
+    width: min(81%, 435px);
     align-self: flex-end;
-    transform: translateX(-3%) rotate(2.8deg);
+    transform: rotate(2.8deg);
   }
 
   .product-card:focus-visible {
