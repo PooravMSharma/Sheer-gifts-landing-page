@@ -102,27 +102,34 @@ export default function FeedbackCarousel() {
           card.style.removeProperty("--orbit-scale");
           card.style.removeProperty("--orbit-opacity");
           card.style.removeProperty("z-index");
+          card.classList.remove("is-front-review");
         });
         return;
       }
 
       const radiusX = Math.min(carousel.clientWidth * 0.29, 285);
       const radiusY = Math.min(carousel.clientHeight * 0.18, 115);
+      const positions = cards.map((_, index) => {
+        const angle = ((index - orbitPhaseRef.current) / cards.length) * Math.PI * 2;
+        return { angle, depth: Math.cos(angle), side: Math.sin(angle) };
+      });
+      const frontIndex = positions.reduce(
+        (bestIndex, position, index) => position.depth > positions[bestIndex].depth ? index : bestIndex,
+        0,
+      );
 
       cards.forEach((card, index) => {
-        const angle = ((index - orbitPhaseRef.current) / cards.length) * Math.PI * 2;
-        const depth = Math.cos(angle);
-        const side = Math.sin(angle);
+        const { depth, side } = positions[index];
         const frontness = (depth + 1) / 2;
-        const frontReveal = Math.max(0, Math.min(1, (frontness - 0.78) / 0.12));
-        const smoothReveal = frontReveal * frontReveal * (3 - 2 * frontReveal);
+        const isFront = index === frontIndex;
 
         card.style.setProperty("--orbit-x", `${side * radiusX}px`);
         card.style.setProperty("--orbit-y", `${depth * radiusY}px`);
         card.style.setProperty("--orbit-rotate", `${side * -13}deg`);
         card.style.setProperty("--orbit-scale", `${0.78 + frontness * 0.24}`);
-        card.style.setProperty("--orbit-opacity", `${0.24 + smoothReveal * 0.76}`);
+        card.style.setProperty("--orbit-opacity", isFront ? "1" : `${0.2 + frontness * 0.24}`);
         card.style.zIndex = `${Math.round(frontness * 100)}`;
+        card.classList.toggle("is-front-review", isFront);
       });
     };
 

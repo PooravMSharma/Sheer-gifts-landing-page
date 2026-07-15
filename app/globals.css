@@ -1264,6 +1264,13 @@ footer a:hover::after {
     transform-origin: center center;
     will-change: transform, opacity;
   }
+
+  .feedback-card.is-front-review,
+  .feedback-card.is-front-review .feedback-shot,
+  .feedback-card.is-front-review .feedback-shot img {
+    opacity: 1 !important;
+    filter: none !important;
+  }
 }
 
 .feedback-shot {
