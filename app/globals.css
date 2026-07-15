@@ -1157,14 +1157,33 @@ footer a:hover::after {
   text-transform: uppercase;
 }
 
-.feedback-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
+.feedback-carousel {
+  min-width: 0;
+  overflow: hidden;
+  padding: 28px 0 72px;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.feedback-track {
+  width: max-content;
+  display: flex;
+  will-change: transform;
+  animation: feedback-round 38s linear infinite;
+}
+
+.feedback-carousel:hover .feedback-track {
+  animation-play-state: paused;
+}
+
+.feedback-set {
+  display: flex;
+  align-items: center;
   gap: 24px;
+  padding-right: 24px;
 }
 
 .feedback-card {
+  flex: 0 0 clamp(280px, 24vw, 380px);
   padding: 11px 11px 30px;
   border: 1px solid rgba(24, 19, 19, 0.12);
   background: var(--paper);
@@ -1176,7 +1195,6 @@ footer a:hover::after {
 }
 
 .feedback-card-2 {
-  margin-top: 76px;
   transform: rotate(1.6deg);
 }
 
@@ -1187,8 +1205,13 @@ footer a:hover::after {
 
 .feedback-card-4,
 .feedback-card-6 {
-  margin-top: 76px;
   transform: rotate(1deg);
+}
+
+@keyframes feedback-round {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .feedback-shot {
@@ -1540,73 +1563,25 @@ footer > p {
 }
 
 @media (max-width: 620px) {
-  .feedback-grid {
-    width: 100%;
-    padding: 18px 8px 34px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    overflow: visible;
-    animation: none;
-    transform: none;
-    touch-action: pan-y;
+  .feedback-carousel {
+    width: calc(100% + 48px);
+    margin-inline: -24px;
+    padding: 12px 0 44px;
+    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
   }
 
-  .feedback-card-1,
-  .feedback-card-2,
-  .feedback-card-3,
-  .feedback-card-4,
-  .feedback-card-5,
-  .feedback-card-6 {
-    position: relative;
-    width: min(78%, 310px);
-    margin-top: clamp(-58px, -14vw, -42px);
-    transform-origin: center top;
-    transition: transform 220ms ease, box-shadow 220ms ease;
+  .feedback-track {
+    animation-duration: 30s;
   }
 
-  .feedback-card-1 {
-    z-index: 1;
-    margin-top: 0;
-    width: min(77%, 305px);
-    align-self: flex-start;
-    transform: rotate(-3deg);
+  .feedback-set {
+    gap: 14px;
+    padding-right: 14px;
   }
 
-  .feedback-card-2 {
-    z-index: 2;
-    width: min(73%, 290px);
-    align-self: flex-end;
-    transform: rotate(3.2deg);
-  }
-
-  .feedback-card-3 {
-    z-index: 3;
-    width: min(76%, 300px);
-    align-self: flex-start;
-    transform: rotate(-2.4deg);
-  }
-
-  .feedback-card-4 {
-    z-index: 4;
-    width: min(72%, 288px);
-    align-self: flex-end;
-    transform: rotate(2.8deg);
-  }
-
-  .feedback-card-5 {
-    z-index: 5;
-    width: min(76%, 300px);
-    align-self: flex-start;
-    transform: rotate(-3.1deg);
-  }
-
-  .feedback-card-6 {
-    z-index: 6;
-    width: min(74%, 294px);
-    align-self: flex-end;
-    transform: rotate(2.3deg);
+  .feedback-card {
+    flex-basis: min(76vw, 300px);
+    padding: 9px 9px 25px;
   }
 
   .feedback-shot {
@@ -2075,5 +2050,11 @@ footer > p {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .feedback-track {
+    width: 100%;
+    overflow-x: auto;
+    animation: none !important;
   }
 }
