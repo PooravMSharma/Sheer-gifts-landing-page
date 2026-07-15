@@ -1541,22 +1541,13 @@ footer > p {
 
 @media (max-width: 620px) {
   .feedback-grid {
-    width: calc(100% + 48px);
-    margin-inline: -24px;
-    padding: 4px 24px 22px;
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: min(82vw, 390px);
-    gap: 16px;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    scroll-snap-type: inline mandatory;
-    scroll-padding-inline: 24px;
-    scrollbar-width: none;
-  }
-
-  .feedback-grid::-webkit-scrollbar {
-    display: none;
+    width: 100%;
+    padding: 10px 3px 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    overflow: visible;
   }
 
   .feedback-card-1,
@@ -1565,10 +1556,46 @@ footer > p {
   .feedback-card-4,
   .feedback-card-5,
   .feedback-card-6 {
+    position: relative;
+    width: min(92%, 390px);
+    margin-top: clamp(-34px, -8vw, -22px);
+    transform-origin: center top;
+    transition: transform 220ms ease, box-shadow 220ms ease;
+  }
+
+  .feedback-card-1 {
+    z-index: 1;
     margin-top: 0;
-    transform: none;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    transform: rotate(-1.5deg);
+  }
+
+  .feedback-card-2 {
+    z-index: 2;
+    align-self: flex-end;
+    transform: rotate(1.8deg);
+  }
+
+  .feedback-card-3 {
+    z-index: 3;
+    align-self: flex-start;
+    transform: rotate(-1deg);
+  }
+
+  .feedback-card-4 {
+    z-index: 4;
+    align-self: flex-end;
+    transform: rotate(1.3deg);
+  }
+
+  .feedback-card-5 {
+    z-index: 5;
+    align-self: flex-start;
+    transform: rotate(-1.8deg);
+  }
+
+  .feedback-card-6 {
+    z-index: 6;
+    transform: rotate(1deg);
   }
 
   .feedback-shot {
@@ -1721,33 +1748,55 @@ footer > p {
   }
 
   .product-grid {
-    width: calc(100% + 48px);
+    width: 100%;
     margin-top: 46px;
-    margin-inline: -24px;
-    padding: 0 24px 18px;
-    display: grid;
-    grid-template-columns: none;
-    grid-auto-flow: column;
-    grid-auto-columns: min(82vw, 430px);
-    gap: 14px;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    scroll-snap-type: inline mandatory;
-    scroll-padding-inline: 24px;
-    scrollbar-width: none;
-  }
-
-  .product-grid::-webkit-scrollbar {
-    display: none;
+    padding: 4px 2px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    overflow: visible;
   }
 
   .product-card,
   .product-card-2,
   .product-card-3 {
+    position: relative;
+    width: min(94%, 500px);
     min-height: 0;
-    aspect-ratio: 0.78;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    aspect-ratio: 0.82;
+    margin-top: clamp(-58px, -10vw, -34px);
+    transform-origin: center top;
+    transition: transform 240ms ease, box-shadow 240ms ease;
+  }
+
+  .product-card-1 {
+    z-index: 1;
+    align-self: flex-start;
+    margin-top: 0;
+    transform: rotate(-1.6deg);
+  }
+
+  .product-card-2 {
+    z-index: 2;
+    align-self: flex-end;
+    transform: rotate(1.8deg);
+  }
+
+  .product-card-3 {
+    z-index: 3;
+    align-self: flex-start;
+    transform: rotate(-1deg);
+  }
+
+  .product-card-4 {
+    z-index: 4;
+    align-self: flex-end;
+    transform: rotate(1.3deg);
+  }
+
+  .product-card:focus-visible {
+    z-index: 10;
   }
 
   .signature {
