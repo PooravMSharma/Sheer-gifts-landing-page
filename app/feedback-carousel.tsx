@@ -50,7 +50,14 @@ function ReviewCards({ duplicate = false }: { duplicate?: boolean }) {
       aria-hidden={duplicate || undefined}
     >
       <figure className="feedback-shot">
-        <img src={review.image} alt={duplicate ? "" : review.alt} width="739" height="1600" loading="lazy" draggable="false" />
+        <img
+          src={review.image}
+          alt={duplicate ? "" : review.alt}
+          width="739"
+          height="1600"
+          loading={duplicate ? "lazy" : "eager"}
+          draggable="false"
+        />
       </figure>
       <blockquote>“{review.quote}”</blockquote>
       <p className="feedback-context">{review.context}</p>
@@ -167,12 +174,19 @@ export default function FeedbackCarousel() {
     dragStartXRef.current = event.clientX;
     dragStartScrollRef.current = event.currentTarget.scrollLeft;
     dragStartPhaseRef.current = orbitPhaseRef.current;
+    const nativeMobileTouch =
+      event.pointerType === "touch" && window.matchMedia("(max-width: 620px)").matches;
+    if (nativeMobileTouch) {
+      event.currentTarget.classList.add("is-dragging");
+      return;
+    }
     event.currentTarget.setPointerCapture(event.pointerId);
     event.currentTarget.classList.add("is-dragging");
   };
 
   const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (!draggingRef.current) return;
+    if (event.pointerType === "touch" && window.matchMedia("(max-width: 620px)").matches) return;
     event.preventDefault();
     const distance = event.clientX - dragStartXRef.current;
     if (window.matchMedia("(min-width: 621px)").matches) {
