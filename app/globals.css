@@ -2169,6 +2169,14 @@ footer > .site-credit {
     width: 100%;
   }
 
+  .hero-actions .button-dark {
+    display: none;
+  }
+
+  .hero-actions .text-link {
+    margin-inline: auto;
+  }
+
   .hero-art {
     min-height: 105vw;
   }
@@ -2243,22 +2251,78 @@ footer > .site-credit {
   }
 
   .signature-panel {
-    padding-block: 74px;
-    padding-inline: 24px;
+    padding: 44px 18px;
+  }
+
+  .signature {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .signature-panel .eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.12em;
+  }
+
+  .signature-panel h2 {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .signature-intro {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  .signature-feature-image {
+    margin-top: 26px;
+  }
+
+  .signature-panel .button-light {
+    min-height: 44px;
+    margin-top: 26px;
+    padding-inline: 12px;
+    font-size: 7px;
   }
 
   .signature-gallery {
-    min-height: 112vw;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .signature-message {
+    padding: 30px 16px 58%;
+  }
+
+  .signature-message-kicker {
+    margin-bottom: 16px;
+    font-size: 6px;
+  }
+
+  .signature-message h3 {
+    font-size: clamp(25px, 7vw, 36px);
+  }
+
+  .signature-message > p:not(.signature-message-kicker) {
+    margin-top: 18px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .signature-message > span {
+    margin-top: 18px;
+    font-size: 5px;
   }
 
   .gallery-small {
-    width: 44%;
+    right: 4%;
+    bottom: 5%;
+    width: 48%;
+    padding: 5px 5px 14px;
   }
 
   .gallery-love {
-    left: 7%;
-    bottom: 9%;
-    font-size: clamp(34px, 10vw, 58px);
+    left: 6%;
+    bottom: 7%;
+    font-size: clamp(24px, 7vw, 38px);
   }
 
   .order-prompt {
