@@ -1838,12 +1838,15 @@ footer > .site-credit {
 
   .feedback-set {
     flex: 0 0 auto;
+    width: max-content;
     gap: 18px;
     padding-right: 24px;
   }
 
   .feedback-card {
-    flex-basis: min(74vw, 292px);
+    width: min(74vw, 292px);
+    max-width: 292px;
+    flex: 0 0 auto;
     padding: 9px 9px 25px;
   }
 

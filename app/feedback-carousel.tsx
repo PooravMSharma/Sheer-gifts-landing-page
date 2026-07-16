@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type { KeyboardEvent, PointerEvent as ReactPointerEvent } from "react";
+import type { KeyboardEvent, PointerEvent as ReactPointerEvent, TouchEvent as ReactTouchEvent } from "react";
 
 const reviews = [
   {
@@ -84,11 +84,11 @@ export default function FeedbackCarousel() {
     return ((value % loopWidth) + loopWidth) % loopWidth;
   };
 
-  const resumeSoon = () => {
+  const resumeSoon = (delay = 900) => {
     if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
     resumeTimerRef.current = setTimeout(() => {
       pausedRef.current = false;
-    }, 900);
+    }, delay);
   };
 
   useEffect(() => {
@@ -168,25 +168,19 @@ export default function FeedbackCarousel() {
   }, []);
 
   const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "touch" && window.matchMedia("(max-width: 620px)").matches) return;
     if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
     pausedRef.current = true;
     draggingRef.current = true;
     dragStartXRef.current = event.clientX;
     dragStartScrollRef.current = event.currentTarget.scrollLeft;
     dragStartPhaseRef.current = orbitPhaseRef.current;
-    const nativeMobileTouch =
-      event.pointerType === "touch" && window.matchMedia("(max-width: 620px)").matches;
-    if (nativeMobileTouch) {
-      event.currentTarget.classList.add("is-dragging");
-      return;
-    }
     event.currentTarget.setPointerCapture(event.pointerId);
     event.currentTarget.classList.add("is-dragging");
   };
 
   const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (!draggingRef.current) return;
-    if (event.pointerType === "touch" && window.matchMedia("(max-width: 620px)").matches) return;
     event.preventDefault();
     const distance = event.clientX - dragStartXRef.current;
     if (window.matchMedia("(min-width: 621px)").matches) {
@@ -194,6 +188,19 @@ export default function FeedbackCarousel() {
     } else {
       event.currentTarget.scrollLeft = keepInLoop(dragStartScrollRef.current - distance);
     }
+  };
+
+  const handleTouchStart = (event: ReactTouchEvent<HTMLDivElement>) => {
+    if (!window.matchMedia("(max-width: 620px)").matches) return;
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    pausedRef.current = true;
+    event.currentTarget.classList.add("is-dragging");
+  };
+
+  const handleTouchEnd = (event: ReactTouchEvent<HTMLDivElement>) => {
+    if (!window.matchMedia("(max-width: 620px)").matches) return;
+    event.currentTarget.classList.remove("is-dragging");
+    resumeSoon(1800);
   };
 
   const finishDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -236,6 +243,9 @@ export default function FeedbackCarousel() {
       onPointerMove={handlePointerMove}
       onPointerUp={finishDrag}
       onPointerCancel={finishDrag}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchEnd}
       onKeyDown={handleKeyDown}
     >
       <div className="feedback-track">
