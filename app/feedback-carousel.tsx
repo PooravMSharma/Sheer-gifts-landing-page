@@ -97,6 +97,7 @@ export default function FeedbackCarousel() {
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const desktopLayout = window.matchMedia("(min-width: 621px)");
+    const mobileLayout = window.matchMedia("(max-width: 620px)");
     const cards = Array.from(carousel.querySelectorAll<HTMLElement>(".feedback-set:first-child .feedback-card"));
     let animationFrame = 0;
     let previousTime = performance.now();
@@ -147,7 +148,7 @@ export default function FeedbackCarousel() {
       const elapsed = Math.min(time - previousTime, 50);
       previousTime = time;
 
-      if (!pausedRef.current && !reducedMotion) {
+      if (!pausedRef.current && (!reducedMotion || mobileLayout.matches)) {
         if (desktopLayout.matches) {
           orbitPhaseRef.current = (orbitPhaseRef.current + elapsed * 0.0002) % cards.length;
         } else {
