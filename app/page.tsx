@@ -154,9 +154,18 @@ export default function Home() {
         </div>
 
         <div className="signature-gallery">
-          <figure className="gallery-main">
-            <img src="/brand/client/wellness-hamper.jpeg" alt="A cream and gold wellness hamper with bath and body products" width="960" height="1280" loading="lazy" />
-          </figure>
+          <div className="signature-message">
+            <p className="signature-message-kicker">Your story, thoughtfully wrapped</p>
+            <h3>
+              More than a gift.<br />
+              <em>A feeling made visible.</em>
+            </h3>
+            <p>
+              Every Sheer creation is shaped around the person receiving it—their favourites,
+              their memories and the little details that make them feel truly known.
+            </p>
+            <span aria-hidden="true">Made personal · Made with care · Made in Jaipur</span>
+          </div>
           <figure className="gallery-small">
             <video
               autoPlay
