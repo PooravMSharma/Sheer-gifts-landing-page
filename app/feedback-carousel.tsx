@@ -98,6 +98,7 @@ export default function FeedbackCarousel() {
         cards.forEach((card) => {
           card.style.removeProperty("--orbit-x");
           card.style.removeProperty("--orbit-y");
+          card.style.removeProperty("--orbit-z");
           card.style.removeProperty("--orbit-rotate");
           card.style.removeProperty("--orbit-scale");
           card.style.removeProperty("--orbit-opacity");
@@ -125,10 +126,11 @@ export default function FeedbackCarousel() {
 
         card.style.setProperty("--orbit-x", `${side * radiusX}px`);
         card.style.setProperty("--orbit-y", `${depth * radiusY}px`);
+        card.style.setProperty("--orbit-z", isFront ? "240px" : `${-140 + frontness * 70}px`);
         card.style.setProperty("--orbit-rotate", `${side * -13}deg`);
         card.style.setProperty("--orbit-scale", `${0.78 + frontness * 0.24}`);
         card.style.setProperty("--orbit-opacity", isFront ? "1" : `${0.2 + frontness * 0.24}`);
-        card.style.zIndex = `${Math.round(frontness * 100)}`;
+        card.style.zIndex = isFront ? "1000" : `${Math.round(frontness * 100)}`;
         card.classList.toggle("is-front-review", isFront);
       });
     };

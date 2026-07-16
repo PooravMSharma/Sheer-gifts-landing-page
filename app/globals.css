@@ -1258,7 +1258,7 @@ footer a:hover::after {
     overflow: hidden;
     opacity: var(--orbit-opacity, 1);
     transform: translate(-50%, -50%)
-      translate3d(var(--orbit-x, 0px), var(--orbit-y, 0px), 0)
+      translate3d(var(--orbit-x, 0px), var(--orbit-y, 0px), var(--orbit-z, 0px))
       rotateY(var(--orbit-rotate, 0deg))
       scale(var(--orbit-scale, 1));
     transform-origin: center center;
@@ -1267,9 +1267,11 @@ footer a:hover::after {
 
   .feedback-card.is-front-review,
   .feedback-card.is-front-review .feedback-shot {
+    z-index: 1000 !important;
     opacity: 1 !important;
     filter: none !important;
     isolation: isolate;
+    background: var(--paper);
   }
 
   .feedback-card.is-front-review .feedback-shot img {
