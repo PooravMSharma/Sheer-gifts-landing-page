@@ -500,13 +500,19 @@ footer a:hover::after {
   background: var(--blush);
 }
 
-.marquee > div {
+.marquee-track {
+  width: max-content;
+  display: flex;
+  animation: marquee-loop 24s linear infinite;
+  will-change: transform;
+}
+
+.marquee-group {
   min-width: max-content;
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: clamp(24px, 4vw, 68px);
-  padding-inline: 4vw;
+  padding-right: clamp(24px, 4vw, 68px);
 }
 
 .marquee span {
@@ -518,6 +524,16 @@ footer a:hover::after {
 .marquee b {
   color: var(--rose);
   font-size: 9px;
+}
+
+@keyframes marquee-loop {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation-play-state: paused;
+  }
 }
 
 .section {
@@ -1881,15 +1897,6 @@ footer > p {
 
   .hero-polaroid {
     left: 0;
-  }
-
-  .marquee > div {
-    justify-content: flex-start;
-    animation: drift 22s linear infinite;
-  }
-
-  @keyframes drift {
-    to { transform: translateX(-45%); }
   }
 
   .story {

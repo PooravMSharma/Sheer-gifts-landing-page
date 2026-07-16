@@ -87,12 +87,21 @@ export default function Home() {
       </section>
 
       <div className="marquee" aria-label="Sheer Gifts specialties">
-        <div>
-          <span>Custom hampers</span><b>✦</b>
-          <span>Personalised gifts</span><b>✦</b>
-          <span>Floral gestures</span><b>✦</b>
-          <span>Wedding moments</span><b>✦</b>
-          <span>Birthday surprises</span><b>✦</b>
+        <div className="marquee-track">
+          <div className="marquee-group">
+            <span>Custom hampers</span><b>✦</b>
+            <span>Personalised gifts</span><b>✦</b>
+            <span>Floral gestures</span><b>✦</b>
+            <span>Wedding moments</span><b>✦</b>
+            <span>Birthday surprises</span><b>✦</b>
+          </div>
+          <div className="marquee-group" aria-hidden="true">
+            <span>Custom hampers</span><b>✦</b>
+            <span>Personalised gifts</span><b>✦</b>
+            <span>Floral gestures</span><b>✦</b>
+            <span>Wedding moments</span><b>✦</b>
+            <span>Birthday surprises</span><b>✦</b>
+          </div>
         </div>
       </div>
 
