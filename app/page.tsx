@@ -111,11 +111,6 @@ export default function Home() {
             <span>01</span>
             <p>Why Sheer</p>
           </div>
-          <div className="story-note" aria-label="The meaning behind Sheer">
-            <span aria-hidden="true">S</span>
-            <p>Utterly personal.<br />Purely thoughtful.<br />Simply yours.</p>
-            <small>That is Sheer.</small>
-          </div>
         </div>
         <div className="story-copy">
           <p className="story-kicker">SHEER · /ʃɪə/ · adjective</p>
