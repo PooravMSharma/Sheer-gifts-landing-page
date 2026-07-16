@@ -190,7 +190,7 @@ export default function Home() {
             </video>
           </figure>
           <p className="gallery-love">
-            <span>Love</span>
+            <span>Love <b aria-hidden="true">♥</b></span>
             <span>Sheer</span>
           </p>
         </div>
