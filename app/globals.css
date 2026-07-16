@@ -817,6 +817,7 @@ footer a:hover::after {
 .product-modal {
   position: relative;
   width: min(1080px, 100%);
+  height: min(88dvh, 820px);
   max-height: min(88vh, 820px);
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
@@ -863,7 +864,7 @@ footer a:hover::after {
 
 .product-modal-media {
   position: relative;
-  min-height: 660px;
+  min-height: 0;
   overflow: hidden;
   background: var(--blush-deep);
 }
@@ -899,7 +900,10 @@ footer a:hover::after {
 }
 
 .product-modal-body {
+  min-height: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   padding: clamp(48px, 5vw, 74px);
   scrollbar-width: thin;
   scrollbar-color: var(--blush-deep) transparent;
@@ -1012,6 +1016,7 @@ footer a:hover::after {
   }
 
   .product-modal {
+    height: auto;
     max-height: 94dvh;
     grid-template-columns: 1fr;
     overflow-y: auto;
