@@ -1818,7 +1818,10 @@ footer > .site-credit {
     width: calc(100% + 48px);
     margin-inline: -24px;
     padding: 12px 24px 44px;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     touch-action: pan-y;
     mask-image: none;
@@ -2412,8 +2415,6 @@ footer > .site-credit {
   }
 
   .feedback-track {
-    width: 100%;
-    overflow-x: auto;
     animation: none !important;
   }
 }

@@ -71,7 +71,8 @@ export default function FeedbackCarousel() {
   const keepInLoop = (value: number) => {
     const carousel = carouselRef.current;
     if (!carousel) return value;
-    const loopWidth = carousel.scrollWidth / 2;
+    const firstSet = carousel.querySelector<HTMLElement>(".feedback-set");
+    const loopWidth = firstSet?.getBoundingClientRect().width ?? 0;
     if (!loopWidth) return value;
     return ((value % loopWidth) + loopWidth) % loopWidth;
   };
