@@ -1764,6 +1764,28 @@ footer > p {
   font-style: italic;
 }
 
+footer > .site-credit {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 100%;
+  margin-top: -8px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 250, 246, 0.12);
+  color: rgba(255, 250, 246, 0.46);
+  font-family: var(--body);
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.site-credit strong {
+  color: #dcb2bc;
+  font-weight: 700;
+}
+
 .mobile-order {
   display: none;
 }
@@ -2079,6 +2101,11 @@ footer > p {
   footer > p {
     grid-column: 1 / -1;
     justify-self: start;
+  }
+
+  footer > .site-credit {
+    justify-self: center;
+    text-align: center;
   }
 
   .mobile-order {
