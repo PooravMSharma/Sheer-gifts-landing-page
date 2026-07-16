@@ -6,15 +6,6 @@ const instagramUrl = "https://www.instagram.com/sheergiftsjaipur/";
 const whatsappUrl =
   "https://wa.me/918209216121?text=Hi%20Sheer%20Gifts%20Jaipur!%20I%20would%20like%20to%20place%20an%20order.";
 
-const signatureGifts = [
-  "Custom hampers",
-  "Personalised gifts",
-  "Floral bouquets",
-  "Wedding invitations",
-  "Birthday gifting",
-  "Friendship keepsakes",
-];
-
 export default function Home() {
   return (
     <main>
@@ -148,15 +139,15 @@ export default function Home() {
           <p className="signature-intro">
             From intimate keepsakes to celebration-ready hampers, tell us the feeling and we’ll start there.
           </p>
-          <div className="signature-list">
-            {signatureGifts.map((gift, index) => (
-              <div key={gift}>
-                <span>0{index + 1}</span>
-                <p>{gift}</p>
-                <b aria-hidden="true">↗</b>
-              </div>
-            ))}
-          </div>
+          <figure className="signature-feature-image">
+            <img
+              src="/brand/client/signature-bride-celebration.png"
+              alt="A bride celebration room decorated with balloons, flowers and a personalised gift hamper"
+              width="860"
+              height="1280"
+              loading="lazy"
+            />
+          </figure>
           <a className="button button-light" href={whatsappUrl} target="_blank" rel="noreferrer">
             Ask about your occasion <span aria-hidden="true">↗</span>
           </a>

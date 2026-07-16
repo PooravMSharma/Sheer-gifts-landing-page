@@ -1050,6 +1050,22 @@ footer a:hover::after {
   font-weight: 400;
 }
 
+.signature-feature-image {
+  width: min(100%, 500px);
+  margin: 44px 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 250, 246, 0.2);
+  aspect-ratio: 4 / 5;
+}
+
+.signature-feature-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
 .button-light {
   margin-top: 42px;
   background: var(--paper);
