@@ -253,7 +253,17 @@ export default function Home() {
           <a href={instagramUrl} target="_blank" rel="noreferrer">Instagram ↗</a>
         </div>
         <p>Crafted for moments that matter.</p>
-        <p className="site-credit">Website crafted by <strong>Poorav Sharma</strong></p>
+        <p className="site-credit">
+          Website crafted by{` `}
+          <a
+            href="https://wa.me/919799962530"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Contact Poorav Sharma on WhatsApp"
+          >
+            Poorav Sharma
+          </a>
+        </p>
       </footer>
 
       <a className="mobile-order" href={whatsappUrl} target="_blank" rel="noreferrer">

@@ -1781,9 +1781,17 @@ footer > .site-credit {
   text-transform: uppercase;
 }
 
-.site-credit strong {
+.site-credit a {
   color: #dcb2bc;
   font-weight: 700;
+}
+
+.site-credit a::after {
+  display: none;
+}
+
+.site-credit a:hover {
+  color: var(--paper);
 }
 
 .mobile-order {
