@@ -189,6 +189,7 @@ export default function Home() {
               <source src="/brand/client/small-image-video.mp4" type="video/mp4" />
             </video>
           </figure>
+          <p className="gallery-love">Love Sheer</p>
         </div>
       </section>
 
