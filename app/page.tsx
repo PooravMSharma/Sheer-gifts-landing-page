@@ -34,7 +34,7 @@ export default function Home() {
         </nav>
 
         <a className="header-cta" href={instagramUrl} target="_blank" rel="noreferrer">
-          Follow on Instagram <span aria-hidden="true">↗</span>
+          <span><span className="header-cta-prefix">Follow on </span>Instagram</span> <span aria-hidden="true">↗</span>
         </a>
       </header>
 

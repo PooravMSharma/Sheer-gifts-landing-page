@@ -1823,7 +1823,7 @@ footer > .site-credit {
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    touch-action: auto;
+    touch-action: pan-x pan-y;
     mask-image: none;
   }
 
@@ -1933,7 +1933,10 @@ footer > .site-credit {
   }
 
   .header-cta {
-    display: none;
+    min-height: 38px;
+    padding: 0 14px;
+    gap: 8px;
+    font-size: 9px;
   }
 
   .hero {
@@ -2173,6 +2176,10 @@ footer > .site-credit {
 
   .brand strong {
     font-size: 17px;
+  }
+
+  .header-cta-prefix {
+    display: none;
   }
 
   .hero-actions {
