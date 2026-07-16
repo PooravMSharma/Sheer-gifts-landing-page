@@ -1814,6 +1814,10 @@ footer > .site-credit {
 }
 
 @media (max-width: 620px) {
+  .announcement {
+    display: none;
+  }
+
   .feedback-carousel {
     width: calc(100% + 48px);
     margin-inline: -24px;
