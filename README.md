@@ -78,6 +78,22 @@ These are load-bearing — keep them intact when editing:
   arrow keys, and its duplicated card set is hidden from assistive tech.
 - Every image and video carries a descriptive `alt` or `aria-label`.
 
+## Deploying
+
+The site runs as a Cloudflare Worker named `sheer-gifts-jaipur` on the owner's
+Cloudflare account, with `sheergiftsjaipur.in` and `www` attached as custom
+domains (configured via `routes` in [vite.config.ts](vite.config.ts)). To ship:
+
+```bash
+npm run build
+npx wrangler deploy
+```
+
+Wrangler must be logged in (`npx wrangler login`). The site was originally
+hosted through ChatGPT's Sites service (`.openai/hosting.json` is a leftover
+from that); DNS moved to Cloudflare in July 2026 and deploys no longer go
+through it.
+
 ## Commands
 
 - `npm run dev` — start local development

@@ -15,6 +15,10 @@ const localBindingConfig = {
   main: "./worker/index.ts",
   compatibility_flags: ["nodejs_compat"],
   images: { binding: "IMAGES" },
+  routes: [
+    { pattern: "sheergiftsjaipur.in", custom_domain: true },
+    { pattern: "www.sheergiftsjaipur.in", custom_domain: true },
+  ],
   d1_databases: d1
     ? [
         {
