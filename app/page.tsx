@@ -261,7 +261,7 @@ export default function Home() {
             rel="noreferrer"
             aria-label="Contact Poorav Sharma on WhatsApp"
           >
-            Poorav Sharma
+            PS
           </a>
         </p>
       </footer>
