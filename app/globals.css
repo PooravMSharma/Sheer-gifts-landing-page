@@ -547,6 +547,46 @@ footer a:hover::after {
   color: var(--rose);
 }
 
+.story-aside {
+  min-width: 0;
+}
+
+.story-note {
+  position: relative;
+  margin-top: 78px;
+  padding: 34px 0 30px 22px;
+  border-left: 1px solid var(--rose);
+}
+
+.story-note > span {
+  display: block;
+  margin-left: -7px;
+  color: rgba(181, 113, 128, 0.16);
+  font-family: var(--display);
+  font-size: 126px;
+  font-style: italic;
+  line-height: 0.66;
+}
+
+.story-note p {
+  position: relative;
+  margin-top: 28px;
+  color: #6d5558;
+  font-family: var(--display);
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.story-note small {
+  display: block;
+  margin-top: 22px;
+  color: var(--rose-dark);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
 .story-copy {
   max-width: 1030px;
 }
@@ -1859,6 +1899,29 @@ footer > p {
 
   .section-label {
     padding: 0;
+  }
+
+  .story-aside {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .story-note {
+    margin: 0;
+    padding: 22px 0 20px 20px;
+  }
+
+  .story-note > span {
+    position: absolute;
+    right: 8%;
+    bottom: 12px;
+    font-size: 112px;
+  }
+
+  .story-note p {
+    max-width: 280px;
+    margin-top: 0;
   }
 
   .story-detail {
